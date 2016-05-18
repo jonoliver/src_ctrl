@@ -21,9 +21,21 @@ live_loop :drone do
   sleep 4
 end
 
+drum_sample = :loop_safari
+
 define :drums do |effect|
+  tick
+  puts look
+  case look
+  when 20
+    drum_sample = :loop_amen
+  when 45
+    drum_sample = :loop_mika
+  when 80
+    drum_sample = :loop_breakbeat
+  end
   with_fx effect, gain: 10, cutoff: 0, cutoff_slide: 4  do |fx|
-    s = sample :loop_safari, rate: 0.25, beat_stretch: 4, pan: 0, pan_slide: 4
+    s = sample drum_sample, rate: 0.25, beat_stretch: 4, pan: 0, pan_slide: 4
     control fx, cutoff: rrand(60, 100)
     control s, pan: rrand(-0.5, 0.5)
   end
