@@ -41,6 +41,16 @@ live_loop :bass do
   end
 end
 
+live_loop :kick do
+  ##| sample :bd_haus
+  sleep 0.5 #one_in(4) ? 0.125 : 0.5
+end
+
+live_loop :hat do
+  ##| sample :drum_cymbal_closed
+  sleep one_in(4) ? 0.25 : 0.125
+end
+
 live_loop :beep do
   sleep 1
   with_fx :flanger do
